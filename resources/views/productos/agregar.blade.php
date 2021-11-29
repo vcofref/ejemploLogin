@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Agregar Producto</div>
                 <div class="card-body">
-                    <form action="{{ url('/guardarProducto')}}" method="post">
+                    <form action="{{ url('/guardarProducto')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Producto</label>
@@ -16,6 +16,11 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Precio</label>
                             <input type="text" name="precio" class="form-control" value="{{ old('precio') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">Imagen</label>
+                            <input type="file" name="imagen" id="imagen" class="form-control form-control-sm">
                         </div>
 
                         <div class="mb-3">

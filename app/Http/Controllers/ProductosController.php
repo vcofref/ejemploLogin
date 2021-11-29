@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,7 @@ class ProductosController extends Controller
     }
 
     public function listar(){
-        $productos = Producto::paginate(3);
+        $productos = Producto::paginate(8);
         return view('productos.listar')
         ->with('productos', $productos);
     }
@@ -39,8 +40,43 @@ class ProductosController extends Controller
         $producto->nombre=$request->input('nombre');
         $producto->precio=$request->input('precio');
         $producto->sucursal_id=$request->input('sucursal');
+
+
+        //cargar Imagen
+        $imagen = $request->file('imagen');
+        if($imagen){
+            $imagen_path=time().'-'.$imagen->getClientOriginalName();
+            \Storage::disk('imagenes')->put($imagen_path, \File::get($imagen));
+            $producto->imagen=$imagen_path;
+        }
+
         $producto->save();
 
         return $this->listar();
+    }
+
+    public function getImagen($filename){
+        $file = \Storage::disk('imagenes')->get($filename);
+        return new Response($file,200);
+    }
+
+    public function deleteProducto($id){
+        $producto = Producto::find($id);
+        if($producto){
+            //Eliminar Imagen
+            \Storage::disk('imagenes')->delete($producto->imagen);
+            $producto->delete();
+            $message="Producto Eliminado Correctamente";
+        }else{
+            $message="El producto no fue eliminado";
+        }
+
+        $productos = Producto::paginate(8);
+        return view('productos.listar')
+        ->with(
+            array(
+                'message' => $message,
+                'productos' => $productos
+            ));
     }
 }
