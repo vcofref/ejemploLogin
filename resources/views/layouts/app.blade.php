@@ -56,31 +56,30 @@
                                 </li>
                             @endif
                         @else
-
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Productos
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item"  href="{{ url('/listar') }}">Listar</a>
-                                        <a class="dropdown-item"  href="{{ url('/agregar') }}">Agregar</a>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
+                            <li class="nav-item active">
+                                <a id="sucursales_nav" class="nav-link" href="{{ url('/sucursal/index') }}" role="button" >
+                                    Sucursales
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Productos
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"  href="{{ url('/listar') }}">Listar</a>
+                                    <a class="dropdown-item"  href="{{ url('/agregar') }}">Agregar</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
-                                
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -93,6 +92,46 @@
         </nav>
 
         <main class="py-4">
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    @foreach( $errors->all() as $error )
+                        <li> {{ $error }} </li>
+                    @endforeach
+                </div>
+            @endif
+            @if (session('message'))
+                <br>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-md-offset-2">
+                            <div class="alert alert-primary">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                                {{ session('message') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            @if (session('error'))
+                <br>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-md-offset-2">
+                            <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                                {{ session('error') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>

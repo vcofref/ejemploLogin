@@ -10,6 +10,8 @@ class Sucursal extends Model
     use HasFactory;
     protected $table = 'sucursal';
 
+    protected $fillable = ['nombre'];
+
     public function productos(){
         return $this->hasMany('App\Models\Producto');
     }

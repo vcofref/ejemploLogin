@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,12 @@ Route::post('/guardarProducto', [App\Http\Controllers\ProductosController::class
 
 Route::get('/miniatura/{filename}', [App\Http\Controllers\ProductosController::class, 'getImagen'])->name('miniatura');
 Route::get('/eliminarProducto/{id}', [App\Http\Controllers\ProductosController::class, 'deleteProducto'])->name('eliminarProducto');
+Route::post('/updateProducto/{id}', [App\Http\Controllers\ProductosController::class, 'updateProducto'])->name('updateProducto');
+
+
+Route::get('/sucursal/index' , [App\Http\Controllers\SucursalController::class , 'index'])->name('sucursal.index');
+// Route::get('/sucursal/create' , [App\Http\Controllers\SucursalController::class , 'create'])->name('sucursal.create');
+Route::post('/sucursal/store' , [App\Http\Controllers\SucursalController::class , 'store'])->name('sucursal.store');
+// Route::get('/sucursal/edit/{id}' , [App\Http\Controllers\SucursalController::class , 'edit'])->name('sucursal.edit');
+Route::put('/sucursal/update/{id}' , [App\Http\Controllers\SucursalController::class , 'update'])->name('sucursal.update');
+Route::delete('/sucursal/delete/{id}' , [App\Http\Controllers\SucursalController::class , 'destroy'])->name('sucursal.delete');
