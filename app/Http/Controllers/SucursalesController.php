@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Sucursal;
@@ -33,18 +34,32 @@ public function guardarS(Request $request){
    
 }
 public function eliminarSucursal($id){
-    $sucursal = Sucursal::find($id);
-    if ($sucursal) {
-        $sucursal -> delete();
-        $message = "La sucursal fue eliminada con éxito :)";
+    $sucursal = Sucursal::with('productos')->findOrFail(($id));
+    if ($sucursal->productos->isNotEmpty()) {
+      $message = "No se pudo eliminar la sucursal";
     }else{
-        $message = "No se pudo eliminar la sucursal :( ";
+        $sucursal -> delete();
+        $message = "Eliminada con éxito"; 
     }
     $sucursales = Sucursal::paginate(8);
-    return view('sucursales.listarS')->with(array(
-        'message'=> $message,
-        'sucursales' => $sucursales
-    ));
+        return view('sucursales.listarS')
+        ->with(
+            array(
+                'message' => $message,
+                'sucursales' => $sucursales
+            ));
+    
 
+}
+public function actualizarSucursal(Request $request, $id)
+{
+    $request->validate([
+        'nombre' => 'required'
+    ]);
+    $sucursal = Sucursal::find( $id );
+        $sucursal->nombre = $request->nombre;
+    $sucursal->save();
+
+    return back();
 }
 }

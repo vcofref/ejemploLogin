@@ -34,4 +34,7 @@ Route::get('/agregarS', [App\Http\Controllers\SucursalesController::class, 'agre
 
 Route::post('/guardarSucursal', [App\Http\Controllers\SucursalesController::class, 'guardarS']);
 
-Route::get('/eliminarSucursal/{id}', [App\Http\Controllers\SucursalesController::class, 'eliminarSucursal'])->name('eliminarSucursal');
+Route::delete('/eliminarSucursal/{id}', [App\Http\Controllers\SucursalesController::class, 'eliminarSucursal'])->name('eliminarSucursal');
+
+Route::put('/actualizar/{id}' , [App\Http\Controllers\SucursalesController::class , 'actualizarSucursal'])->name('actualizar');
+

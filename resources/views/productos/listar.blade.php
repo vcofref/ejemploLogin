@@ -33,6 +33,8 @@
                                             </div>
                                             <div class="card-footer">
                                             <a href="#eliminarModal{{$producto->id}}" role="button" class="btn btn-sm btn-danger" data-toggle="modal">Eliminar</a>
+                                            <a href="#actualizarModal{{$producto->id}}" role="button" class="btn btn-sm btn-success" data-toggle="modal">Actualizar</a>
+
                                             
                                             <!-- Modal / Ventana / Overlay en HTML -->
                                             <div id="eliminarModal{{$producto->id}}" class="modal fade">
@@ -43,7 +45,7 @@
                                                             <h4 class="modal-title">¿Estás seguro?</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>¿Seguro que quieres borrar el producto {{ $producto->nombre }}?</p>
+                                                            <p>¿Seguro que quieres borrar el producto {{ $producto->nombre }}? con </p>
                                                             <p class="text-warning"><small>Si lo borras, nunca podrás recuperarlo.</small></p>
                                                         </div>
                                                         <div class="modal-footer">
@@ -53,6 +55,7 @@
                                                     </div>
                                                 </div>
                                             </div>  
+                                        
                                             </div>
                                         </div>
                                     </div>
