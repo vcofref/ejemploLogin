@@ -37,4 +37,4 @@ Route::post('/guardarSucursal', [App\Http\Controllers\SucursalesController::clas
 Route::delete('/eliminarSucursal/{id}', [App\Http\Controllers\SucursalesController::class, 'eliminarSucursal'])->name('eliminarSucursal');
 
 Route::put('/actualizar/{id}' , [App\Http\Controllers\SucursalesController::class , 'actualizarSucursal'])->name('actualizar');
-
+Route::get('/updateProducto/{id}', [App\Http\Controllers\ProductosController::class, 'update'])->name('updateProducto');
