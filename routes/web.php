@@ -28,3 +28,10 @@ Route::post('/guardarProducto', [App\Http\Controllers\ProductosController::class
 
 Route::get('/miniatura/{filename}', [App\Http\Controllers\ProductosController::class, 'getImagen'])->name('miniatura');
 Route::get('/eliminarProducto/{id}', [App\Http\Controllers\ProductosController::class, 'deleteProducto'])->name('eliminarProducto');
+
+Route::get('/listarS', [App\Http\Controllers\SucursalesController::class, 'listarS'])->name('listarSucursales');
+Route::get('/agregarS', [App\Http\Controllers\SucursalesController::class, 'agregarS'])->name('agregarSucursales');
+
+Route::post('/guardarSucursal', [App\Http\Controllers\SucursalesController::class, 'guardarS']);
+
+Route::get('/eliminarSucursal/{id}', [App\Http\Controllers\SucursalesController::class, 'eliminarSucursal'])->name('eliminarSucursal');
