@@ -27,4 +27,7 @@ Route::get('/agregar', [App\Http\Controllers\ProductosController::class, 'agrega
 Route::post('/guardarProducto', [App\Http\Controllers\ProductosController::class, 'guardar']);
 
 Route::get('/miniatura/{filename}', [App\Http\Controllers\ProductosController::class, 'getImagen'])->name('miniatura');
+
 Route::get('/eliminarProducto/{id}', [App\Http\Controllers\ProductosController::class, 'deleteProducto'])->name('eliminarProducto');
+
+Route::get('/buscarProducto/{search?}', [App\Http\Controllers\ProductosController::class, 'searchProducto'])->name('buscarProducto');

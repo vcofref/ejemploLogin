@@ -79,4 +79,21 @@ class ProductosController extends Controller
                 'productos' => $productos
             ));
     }
+
+    public function searchProducto($search = null){
+
+        if(is_null($search)){
+            $search = \Request::get('search');
+            return redirect()->route('buscarProducto', array('search' => $search));
+        }
+
+        $productos = Producto::where('nombre', 'like', '%'. $search . '%')->paginate(8);
+        return view('productos.listar')
+        ->with(
+            array(
+                'productos' => $productos
+            )
+        );
+
+    }
 }
