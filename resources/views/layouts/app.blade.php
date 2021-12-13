@@ -80,10 +80,11 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item"  href="{{ url('/listar') }}">Listar</a>
                                         <a class="dropdown-item"  href="{{ url('/agregar') }}">Agregar</a>
+                                        
                                     </div>
                                 </li>
-
                                 <li class="nav-item dropdown">
+<<<<<<< HEAD
 =======
                             <li class="nav-item active">
                                 <a id="sucursales_nav" class="nav-link" href="{{ url('/sucursal/index') }}" role="button" >
@@ -101,6 +102,19 @@
                             </li>
                             <li class="nav-item dropdown">
 >>>>>>> fa1deb33401c32b596a872c9c8a0ce3cb1db86b2
+=======
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Sucursales 
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item"  href="{{ url('/listarS') }}">Listar</a>
+                                        <a class="dropdown-item"  href="{{ url('/agregarS') }}">Agregar</a>
+                                        
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" >
+>>>>>>> 5067598fa797721183f3bef6c72167690918ff10
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>

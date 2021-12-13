@@ -119,4 +119,22 @@ class ProductosController extends Controller
         );
 
     }
+    public function update(Request $request, $id){
+        
+        $producto= Producto::find($id);
+        $producto->nombre=$request->input('nombre');
+        $producto->precio=$request->input('precio');
+        $imagen = $request->file('imagen');
+        if($imagen){
+            $imagen_path=time().'-'.$imagen->getClientOriginalName();
+            \Storage::disk('imagenes')->put($imagen_path, \File::get($imagen));
+            $producto->imagen=$imagen_path;
+        }
+
+        $producto->update();
+
+        return $this->listar();
+    }
+
+
 }

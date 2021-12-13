@@ -51,6 +51,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                         </div>  
 
                                         <div class="float-left">
@@ -62,9 +63,21 @@
                                                     <form action="{{ url("/updateProducto/$producto->id")}}" method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('POST')
+=======
+                                            <div class="card-footer">
+                                            <a href="#eliminarModal{{$producto->id}}" role="button" class="btn btn-sm btn-danger" data-toggle="modal">Eliminar</a>
+                                            <a href="#editarModal{{$producto->id}}" role="button" class="btn btn-sm btn-success" data-toggle="modal">Actualizar</a>
+
+                                            
+                                            <!-- Modal / Ventana / Overlay en HTML -->
+                                            <div id="eliminarModal{{$producto->id}}" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+>>>>>>> 5067598fa797721183f3bef6c72167690918ff10
                                                         <div class="modal-header">
                                                         </div>
                                                         <div class="modal-body">
+<<<<<<< HEAD
                                                             <div class="mb-3">
                                                                 <label for="nombre_{{ $producto->id }}" class="form-label">Producto</label>
                                                                 <input type="text" name="nombre" id="nombre_{{ $producto->id }}" class="form-control" value="{{ $producto->nombre }}">
@@ -87,6 +100,10 @@
                                                                 </select>
                                                             </div>
                                                             <br>
+=======
+                                                            <p>¿Seguro que quieres borrar el producto {{ $producto->nombre }}? con </p>
+                                                            <p class="text-warning"><small>Si lo borras, nunca podrás recuperarlo.</small></p>
+>>>>>>> 5067598fa797721183f3bef6c72167690918ff10
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -94,6 +111,55 @@
                                                         </div>
                                                     </form>
                                                 </div>
+<<<<<<< HEAD
+=======
+                                            </div>  
+                                           
+                                        <div id="editarModal{{$producto->id}}" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form action="{{ url('/updateProducto/'.$producto->id) }}" method="post" enctype="multipart/form-data"> >
+                                                    @csrf
+                                                    @method ('GET')
+                                                    <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">¿Estás seguro?</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <p>¿Seguro que quieres actualizar el producto {{ $producto->nombre }}?</p>
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Producto</label>
+                                                        <input type="text" name="nombre" class="form-control" id="nombre{{ $producto->nombre }}" value="{{ $producto->nombre }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Precio</label>
+                                                        <input type="text" name="precio" class="form-control" value="{{ $producto->precio }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Imagen</label>
+                                                        <input type="file" name="imagen" id="img{{ $producto->id }}" class="form-control form-control-sm">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" class="btn btn-success">Editar</button>
+                                                    </div>
+                                                    
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                        </div>
+                                        
+                                        
+                                        
+>>>>>>> 5067598fa797721183f3bef6c72167690918ff10
                                             </div>
                                         </div>  
                                     </div>
